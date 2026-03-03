@@ -76,10 +76,10 @@ function Hero() {
         </div>
       </Reveal>
       <Reveal delay={0.06}>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.15, maxWidth: 640, letterSpacing: "-1px", marginBottom: 24 }}>다음 노벨상의<br />주인공을 찾아서</h1>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.15, maxWidth: 640, letterSpacing: "-1px", marginBottom: 24 }}>당신의 가설이,<br />세상을 바꿀때까지.</h1>
       </Reveal>
       <Reveal delay={0.12}>
-        <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 16, color: "#777", lineHeight: 1.7, maxWidth: 460 }}>세계를 바꿀 연구를 하고 있는 과학자, 철학자, 공학자들의 이야기.<br /><br />그들의 질문, 실패, 그리고 발견의 순간을 기록합니다.</p>
+        <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 16, color: "#777", lineHeight: 1.7, maxWidth: 460 }}>세계를 바꿀 연구를 하고 있는 학자들의 이야기.<br /><br />그들의 질문, 실패, 그리고 발견의 순간을 기록합니다.</p>
       </Reveal>
       <Reveal delay={0.18}><div style={{ marginTop: 56, height: 1, background: "#E0DDD8" }} /></Reveal>
     </section>
