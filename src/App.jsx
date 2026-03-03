@@ -11,10 +11,10 @@ const STORIES = [
   { id: 5, category: "Climate", title: "탄소 포집, 기술만으로 충분한가", author: "정다은", affiliation: "GIST 지구환경공학부", excerpt: "직접 공기 포집 기술의 현실과 한계를 점검한다.", date: "2026.01.10", readTime: "11min" },
 ];
 
-const INSTAGRAM_POSTS = [
+const FALLBACK_POSTS = [
   { id: 1, title: "기초과학이 세상을 바꾸는 법", type: "REEL", thumbnail: "/reels/reel1.jpg", url: "https://www.instagram.com/reel/DVVbOIliSeb/" },
   { id: 2, title: "한국 노벨상 머지않았습니다", type: "REEL", thumbnail: "/reels/reel2.jpg", url: "https://www.instagram.com/reel/DVVa4dVidZp/" },
-  { id: 3, title: "23살에 대학원 입학합니다", type: "REEL", thumbnail: "/reels/reel3.jpg", url: "https://www.instagram.com/reel/DVTIl0UiSyN/" },
+  { id: 3, title: "의사 대신 연구 선택한 이유", type: "REEL", thumbnail: "/reels/reel3.jpg", url: "https://www.instagram.com/reel/DVTIl0UiSyN/" },
   { id: 4, title: "23살에 대학원 입학합니다", type: "REEL", thumbnail: "/reels/reel4.jpg", url: "https://www.instagram.com/reel/DVTFakrCRgL/" },
 ];
 
@@ -154,6 +154,19 @@ function StoriesList({ stories }) {
 
 function InstagramSection() {
   const [hoveredId, setHoveredId] = useState(null);
+  const [posts, setPosts] = useState(FALLBACK_POSTS);
+
+  useEffect(() => {
+    fetch("/api/reels")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.reels && data.reels.length > 0) setPosts(data.reels);
+      })
+      .catch(() => {});
+  }, []);
+
+  const cols = posts.length <= 4 ? posts.length : 4;
+
   return (
     <section style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px 88px" }}>
       <Reveal>
@@ -167,8 +180,8 @@ function InstagramSection() {
         <div style={{ height: 1, background: "#1A1A1A", marginBottom: 24 }} />
       </Reveal>
       <Reveal delay={0.08}>
-        <div className="insta-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
-          {INSTAGRAM_POSTS.map((post) => (
+        <div className="insta-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 12 }}>
+          {posts.map((post) => (
             <a key={post.id} href={post.url} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setHoveredId(post.id)} onMouseLeave={() => setHoveredId(null)} style={{ display: "block", textDecoration: "none", position: "relative", paddingBottom: "177.78%", background: "#1A1A1A", borderRadius: 8, overflow: "hidden", transition: "transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s ease", transform: hoveredId === post.id ? "translateY(-4px)" : "none", boxShadow: hoveredId === post.id ? "0 8px 24px rgba(0,0,0,0.12)" : "0 1px 4px rgba(0,0,0,0.06)" }}>
               <img src={post.thumbnail} alt={post.title} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s cubic-bezier(0.25,1,0.5,1)", transform: hoveredId === post.id ? "scale(1.05)" : "scale(1)" }} />
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 2, opacity: hoveredId === post.id ? 1 : 0.7, transition: "opacity 0.3s ease" }}>
