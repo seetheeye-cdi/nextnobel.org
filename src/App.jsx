@@ -4,11 +4,9 @@ const LOGO_SRC = "/logo.png";
 const INSTAGRAM_URL = "https://www.instagram.com/nextnobel/";
 
 const STORIES = [
-  { id: 1, category: "Neuroscience", title: "기억의 지도를 그리는 사람", author: "김서연", affiliation: "KAIST 뇌인지과학과", excerpt: "해마 신경회로 연구의 최전선에서, 잊혀진 기억을 되찾는 실마리를 쫓고 있다.", date: "2026.03.01", readTime: "12min" },
-  { id: 2, category: "Quantum Physics", title: "양자 얽힘, 그 너머의 세계", author: "박준혁", affiliation: "서울대 물리천문학부", excerpt: "비국소성 실험을 통해 실재의 의미를 다시 묻는다.", date: "2026.02.18", readTime: "15min" },
-  { id: 3, category: "AI Ethics", title: "AI는 정의를 학습할 수 있는가", author: "이하은", affiliation: "POSTECH 인공지능연구원", excerpt: "알고리즘 공정성 연구가 마주한 철학적 난제들.", date: "2026.02.04", readTime: "10min" },
-  { id: 4, category: "Genetics", title: "유전자 가위의 윤리적 경계", author: "최민수", affiliation: "연세대 의과학과", excerpt: "크리스퍼 기술이 열어젖힌 가능성과, 그 앞에 놓인 질문들.", date: "2026.01.22", readTime: "8min" },
-  { id: 5, category: "Climate", title: "탄소 포집, 기술만으로 충분한가", author: "정다은", affiliation: "GIST 지구환경공학부", excerpt: "직접 공기 포집 기술의 현실과 한계를 점검한다.", date: "2026.01.10", readTime: "11min" },
+  { id: 1, category: "Entomology", title: "맥주 찌꺼기로 해충을 잡는 과학자", author: "윤준호", affiliation: "서울대 농생명과학부 · 곤충화학생태학", excerpt: "26살에 서울대 박사를 수석 졸업하고, 13편의 논문을 쓴 곤충학자. 맥주 양조 부산물인 홉 찌꺼기에서 해충 방제의 실마리를 찾아냈다. 올 4월, 스웨덴 KTH 왕립공과대학으로 떠난다.", date: "2026.03.04", readTime: "15min" },
+  { id: 2, category: "Condensed Matter", title: "카고메 격자 위에서 양자를 읽다", author: "이준영", affiliation: "서울대 물리천문학부 · Kang Research Group", excerpt: "한국과학영재학교를 거쳐 서울대에서 카고메 금속의 전자 구조를 탐구한다. nanoARPES로 나노미터 단위의 양자 세계를 들여다보며, Nature 급 연구의 공저자로 이름을 올렸다.", date: "2026.02.18", readTime: "12min" },
+  { id: 3, category: "Biophysics", title: "2미터의 DNA는 어떻게 핵 속에 들어가는가", author: "이수현", affiliation: "서울대 화학부 · 단분자 생물물리", excerpt: "국제화학올림피아드 은메달리스트가 선택한 길은, 화학이 아닌 생명의 근본이었다. 형광 현미경으로 분자 하나하나를 관찰하며, 염색체가 접히는 비밀을 풀고 있다.", date: "2026.02.04", readTime: "10min" },
 ];
 
 const FALLBACK_POSTS = [
@@ -281,7 +279,7 @@ export default function App() {
       <Nav scrolled={scrolled} />
       <Hero />
       <Featured story={STORIES[0]} />
-      <StoriesList stories={STORIES.slice(1)} />
+      <StoriesList stories={STORIES.slice(1, 3)} />
       <InstagramSection />
       <Newsletter />
       <Footer />
