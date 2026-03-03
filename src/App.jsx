@@ -12,12 +12,10 @@ const STORIES = [
 ];
 
 const INSTAGRAM_POSTS = [
-  { id: 1, title: "뇌과학자의 하루", type: "REEL", color: "#2C3E50" },
-  { id: 2, title: "양자역학 쉽게 보기", type: "REEL", color: "#34495E" },
-  { id: 3, title: "AI 윤리 토론", type: "REEL", color: "#1A252F" },
-  { id: 4, title: "유전자 편집의 미래", type: "REEL", color: "#2C3E50" },
-  { id: 5, title: "기후변화 연구실", type: "REEL", color: "#34495E" },
-  { id: 6, title: "수학자의 영감", type: "REEL", color: "#1A252F" },
+  { id: 1, title: "기초과학이 세상을 바꾸는 법", type: "REEL", thumbnail: "/reels/reel1.jpg", url: "https://www.instagram.com/reel/DVVbOIliSeb/" },
+  { id: 2, title: "한국 노벨상 머지않았습니다", type: "REEL", thumbnail: "/reels/reel2.jpg", url: "https://www.instagram.com/reel/DVVa4dVidZp/" },
+  { id: 3, title: "23살에 대학원 입학합니다", type: "REEL", thumbnail: "/reels/reel3.jpg", url: "https://www.instagram.com/reel/DVTIl0UiSyN/" },
+  { id: 4, title: "23살에 대학원 입학합니다", type: "REEL", thumbnail: "/reels/reel4.jpg", url: "https://www.instagram.com/reel/DVTFakrCRgL/" },
 ];
 
 function useScrollReveal(threshold = 0.12) {
@@ -83,7 +81,7 @@ function Hero() {
         <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.15, maxWidth: 640, letterSpacing: "-1px", marginBottom: 24 }}>다음 노벨상의<br />주인공을 찾아서</h1>
       </Reveal>
       <Reveal delay={0.12}>
-        <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 16, color: "#777", lineHeight: 1.7, maxWidth: 460 }}>세계를 바꿀 연구를 하고 있는 과학자, 철학자, 공학자들의 이야기. 그들의 질문, 실패, 그리고 발견의 순간을 기록합니다.</p>
+        <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 16, color: "#777", lineHeight: 1.7, maxWidth: 460 }}>세계를 바꿀 연구를 하고 있는 과학자, 철학자, 공학자들의 이야기.<br /><br />그들의 질문, 실패, 그리고 발견의 순간을 기록합니다.</p>
       </Reveal>
       <Reveal delay={0.18}><div style={{ marginTop: 56, height: 1, background: "#E0DDD8" }} /></Reveal>
     </section>
@@ -169,10 +167,11 @@ function InstagramSection() {
         <div style={{ height: 1, background: "#1A1A1A", marginBottom: 24 }} />
       </Reveal>
       <Reveal delay={0.08}>
-        <div className="insta-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        <div className="insta-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
           {INSTAGRAM_POSTS.map((post) => (
-            <a key={post.id} href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setHoveredId(post.id)} onMouseLeave={() => setHoveredId(null)} style={{ display: "block", textDecoration: "none", position: "relative", paddingBottom: "120%", background: post.color, overflow: "hidden", transition: "transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s ease", transform: hoveredId === post.id ? "translateY(-4px)" : "none", boxShadow: hoveredId === post.id ? "0 8px 24px rgba(0,0,0,0.12)" : "0 1px 4px rgba(0,0,0,0.06)" }}>
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 2 }}>
+            <a key={post.id} href={post.url} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setHoveredId(post.id)} onMouseLeave={() => setHoveredId(null)} style={{ display: "block", textDecoration: "none", position: "relative", paddingBottom: "120%", background: "#1A1A1A", overflow: "hidden", transition: "transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s ease", transform: hoveredId === post.id ? "translateY(-4px)" : "none", boxShadow: hoveredId === post.id ? "0 8px 24px rgba(0,0,0,0.12)" : "0 1px 4px rgba(0,0,0,0.06)" }}>
+              <img src={post.thumbnail} alt={post.title} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s cubic-bezier(0.25,1,0.5,1)", transform: hoveredId === post.id ? "scale(1.05)" : "scale(1)" }} />
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 2, opacity: hoveredId === post.id ? 1 : 0.7, transition: "opacity 0.3s ease" }}>
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.15)" /><polygon points="16,12 30,20 16,28" fill="rgba(255,255,255,0.8)" /></svg>
               </div>
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px 16px 16px", background: "linear-gradient(transparent, rgba(0,0,0,0.6))", zIndex: 2 }}>
@@ -180,9 +179,6 @@ function InstagramSection() {
               </div>
               <div style={{ position: "absolute", top: 12, right: 12, zIndex: 2, padding: "3px 8px", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(4px)" }}>
                 <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.8)", letterSpacing: "1px" }}>{post.type}</span>
-              </div>
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", opacity: 0.06, zIndex: 1 }}>
-                <img src={LOGO_SRC} alt="" style={{ width: 120, height: 120, borderRadius: "50%" }} />
               </div>
             </a>
           ))}
@@ -255,7 +251,7 @@ const globalCSS = `
     .mobile-menu-btn { display: block !important; }
     .story-row { grid-template-columns: 1fr !important; gap: 8px !important; }
     .read-time { display: none !important; }
-    .insta-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .insta-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
   }
   @media (min-width: 769px) {
     .mobile-menu-btn { display: none !important; }
