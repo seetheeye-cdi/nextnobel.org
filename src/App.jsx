@@ -4,7 +4,7 @@ const LOGO_SRC = "/logo.png";
 const INSTAGRAM_URL = "https://www.instagram.com/nextnobel/";
 
 const STORIES = [
-  { id: 1, category: "Entomology", title: "지속가능한 살충제를 설계하는 과학자", author: "윤준호", affiliation: "서울대 응용생물화학부 · 곤충 독성학", excerpt: "25살에 서울대 박사를 수석 졸업한 곤충학자. 살충제 혼합물 속 성분들이 만들어내는 복잡한 상호작용을 이해하여, 더 정밀한 방제 전략을 설계한다. 올 5월, 스웨덴 룬드대학교에서 농약이 화분매개 곤충에 미치는 영향을 연구하러 떠난다.", date: "2026.03.04", readTime: "15min" },
+  { id: 1, category: "Entomology", title: "지속가능한 살충제를 설계하는 과학자", author: "윤준호", affiliation: "서울대 응용생물화학부 · 곤충 독성학", excerpt: "25살에 서울대 박사를 수석 졸업한 곤충학자. 살충제 혼합물 성분 간 복잡한 상호작용을 규명하고, 더 정밀한 방제 전략을 설계한다. 올 5월, 스웨덴 룬드대학교에서 농약이 화분매개 곤충에 미치는 영향을 연구한다.", date: "2026.03.04", readTime: "15min" },
   { id: 2, category: "Condensed Matter", title: "카고메 격자 위에서 양자를 읽다", author: "이준영", affiliation: "서울대 물리천문학부 · Kang Research Group", excerpt: "한국과학영재학교를 거쳐 서울대에서 카고메 금속의 전자 구조를 탐구한다. nanoARPES로 나노미터 단위의 양자 세계를 들여다보며, Nature 급 연구의 공저자로 이름을 올렸다.", date: "2026.02.18", readTime: "12min" },
   { id: 3, category: "Biophysics", title: "2미터의 DNA는 어떻게 핵 속에 들어가는가", author: "이수현", affiliation: "서울대 물리천문학부 · 단분자 생물물리", excerpt: "국제화학올림피아드 은메달리스트가 선택한 길은, 화학이 아닌 생명의 근본이었다. 형광 현미경으로 분자 하나하나를 관찰하며, 염색체가 접히는 비밀을 풀고 있다.", date: "2026.02.04", readTime: "10min" },
 ];
@@ -98,7 +98,7 @@ function Featured({ story }) {
             <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 12, color: "#AAA" }}>{story.readTime}</span>
           </div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.2, letterSpacing: "-0.5px", marginBottom: 14, transform: hovered ? "translateX(6px)" : "none", transition: "transform 0.5s cubic-bezier(0.25,1,0.5,1)" }}>{story.title}</h2>
-          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 15, color: "#888", lineHeight: 1.65, maxWidth: 680, marginBottom: 20 }}>{story.excerpt}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 15, color: "#888", lineHeight: 1.65, maxWidth: 680, marginBottom: 20, wordBreak: "keep-all" }}>{story.excerpt}</p>
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
             <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#444" }}>{story.author}</span>
             <span style={{ color: "#CCC" }}>—</span>
@@ -122,7 +122,7 @@ function StoryRow({ story, index }) {
         </div>
         <div>
           <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 500, color: "#1A1A1A", lineHeight: 1.3, marginBottom: 6, letterSpacing: "-0.2px", transform: hovered ? "translateX(4px)" : "none", transition: "transform 0.4s cubic-bezier(0.25,1,0.5,1)" }}>{story.title}</h3>
-          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#999", lineHeight: 1.6 }}>{story.excerpt}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#999", lineHeight: 1.6, wordBreak: "keep-all" }}>{story.excerpt}</p>
           <div style={{ marginTop: 8, display: "flex", gap: 6, alignItems: "center" }}>
             <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 13, color: "#666" }}>{story.author}</span>
             <span style={{ color: "#CCC", fontSize: 12 }}>·</span>
