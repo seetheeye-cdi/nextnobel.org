@@ -98,7 +98,7 @@ function Featured({ story }) {
             <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 12, color: "#AAA" }}>{story.readTime}</span>
           </div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.2, letterSpacing: "-0.5px", marginBottom: 14, transform: hovered ? "translateX(6px)" : "none", transition: "transform 0.5s cubic-bezier(0.25,1,0.5,1)" }}>{story.title}</h2>
-          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 15, color: "#888", lineHeight: 1.65, maxWidth: 680, marginBottom: 20 }}>{story.excerpt}
+          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 15, color: "#888", lineHeight: 1.65, maxWidth: 680, marginBottom: 20 }}>{story.excerpt}</p>
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
             <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#444" }}>{story.author}</span>
             <span style={{ color: "#CCC" }}>—</span>
