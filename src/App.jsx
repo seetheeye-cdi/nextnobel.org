@@ -201,20 +201,42 @@ function InstagramSection() {
 
 function Newsletter() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle");
   const [focused, setFocused] = useState(false);
+
+  const handleSubscribe = async () => {
+    if (!email) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("Subscription failed");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="subscribe" style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px 88px" }}>
       <Reveal>
         <div style={{ maxWidth: 460 }}>
           <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 400, color: "#1A1A1A", marginBottom: 10 }}>Newsletter</h2>
-          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#999", lineHeight: 1.65, marginBottom: 24 }}>매주 화요일, 한 편의 연구자 이야기를 보내드립니다.</p>
-          {!submitted ? (
-            <div style={{ display: "flex", borderBottom: `1px solid ${focused ? "#1A1A1A" : "#D0CEC9"}`, transition: "border-color 0.3s", paddingBottom: 8 }}>
-              <input type="email" value={email} onChange={e => setEmail(e.target.value)} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} placeholder="your@email.com" style={{ flex: 1, background: "transparent", border: "none", color: "#1A1A1A", fontSize: 15, fontFamily: "'IBM Plex Sans', sans-serif", outline: "none", padding: "4px 0" }} />
-              <button onClick={() => { if (email) setSubmitted(true); }} style={{ background: "transparent", border: "none", color: "#1A1A1A", fontSize: 13, fontFamily: "'IBM Plex Sans', sans-serif", cursor: "pointer", fontWeight: 500, padding: "4px 0", transition: "opacity 0.3s", opacity: email ? 1 : 0.3 }}>Subscribe →</button>
-            </div>
-          ) : (<p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#1A1A1A" }}>감사합니다. 다음 화요일에 만나요.</p>)}
+          <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#999", lineHeight: 1.65, marginBottom: 24 }}>새로운 게시글이 올라오면 이메일로 알려드립니다.</p>
+          {status === "success" ? (
+            <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#1A1A1A" }}>감사합니다. 새 게시글이 올라오면 알려드릴게요.</p>
+          ) : (
+            <>
+              <div style={{ display: "flex", borderBottom: `1px solid ${focused ? "#1A1A1A" : "#D0CEC9"}`, transition: "border-color 0.3s", paddingBottom: 8 }}>
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} onKeyDown={e => { if (e.key === "Enter") handleSubscribe(); }} placeholder="your@email.com" disabled={status === "loading"} style={{ flex: 1, background: "transparent", border: "none", color: "#1A1A1A", fontSize: 15, fontFamily: "'IBM Plex Sans', sans-serif", outline: "none", padding: "4px 0", opacity: status === "loading" ? 0.5 : 1 }} />
+                <button onClick={handleSubscribe} disabled={status === "loading" || !email} style={{ background: "transparent", border: "none", color: "#1A1A1A", fontSize: 13, fontFamily: "'IBM Plex Sans', sans-serif", cursor: status === "loading" ? "wait" : "pointer", fontWeight: 500, padding: "4px 0", transition: "opacity 0.3s", opacity: email && status !== "loading" ? 1 : 0.3 }}>{status === "loading" ? "..." : "Subscribe →"}</button>
+              </div>
+              {status === "error" && <p style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 13, color: "#cc4444", marginTop: 8 }}>문제가 발생했습니다. 다시 시도해주세요.</p>}
+            </>
+          )}
         </div>
       </Reveal>
     </section>
