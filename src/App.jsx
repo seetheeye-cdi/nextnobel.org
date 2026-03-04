@@ -4,7 +4,7 @@ const LOGO_SRC = "/logo.png";
 const INSTAGRAM_URL = "https://www.instagram.com/nextnobel/";
 
 const STORIES = [
-  { id: 1, category: "Entomology", title: "살충제의 숨겨진 상호작용을 푸는 과학자", author: "윤준호", affiliation: "서울대 응용생물화학부 · 곤충 독성학", excerpt: "26살에 서울대 박사를 수석 졸업한 곤충학자. 살충제 혼합물 속 성분들이 만들어내는 복잡한 상호작용을 수학적으로 모델링하며, 더 정밀한 방제 전략을 설계한다. 올 4월, 스웨덴 룬드대학교로 떠난다.", date: "2026.03.04", readTime: "15min" },
+  { id: 1, category: "Entomology", title: "지속가능한 살충제를 설계하는 과학자", author: "윤준호", affiliation: "서울대 응용생물화학부 · 곤충 독성학", excerpt: "26살에 서울대 박사를 수석 졸업한 곤충학자. 살충제 혼합물 속 성분들이 만들어내는 복잡한 상호작용을 수학적으로 모델링하며, 더 정밀한 방제 전략을 설계한다. 올 4월, 스웨덴 룬드대학교에서 화분매개 곤충을 보전하는 연구를 시작한다.", date: "2026.03.04", readTime: "15min" },
   { id: 2, category: "Condensed Matter", title: "카고메 격자 위에서 양자를 읽다", author: "이준영", affiliation: "서울대 물리천문학부 · Kang Research Group", excerpt: "한국과학영재학교를 거쳐 서울대에서 카고메 금속의 전자 구조를 탐구한다. nanoARPES로 나노미터 단위의 양자 세계를 들여다보며, Nature 급 연구의 공저자로 이름을 올렸다.", date: "2026.02.18", readTime: "12min" },
   { id: 3, category: "Biophysics", title: "2미터의 DNA는 어떻게 핵 속에 들어가는가", author: "이수현", affiliation: "서울대 물리천문학부 · 단분자 생물물리", excerpt: "국제화학올림피아드 은메달리스트가 선택한 길은, 화학이 아닌 생명의 근본이었다. 형광 현미경으로 분자 하나하나를 관찰하며, 염색체가 접히는 비밀을 풀고 있다.", date: "2026.02.04", readTime: "10min" },
 ];
