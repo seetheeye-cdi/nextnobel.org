@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const LOGO_SRC = "/logo.png";
 const INSTAGRAM_URL = "https://www.instagram.com/nextnobel/";
@@ -305,6 +306,7 @@ export default function App() {
       <InstagramSection />
       <Newsletter />
       <Footer />
+      <Analytics />
     </div>
   );
 }
