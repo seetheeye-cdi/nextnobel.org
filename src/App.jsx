@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const LOGO_SRC = "/logo.png";
 const INSTAGRAM_URL = "https://www.instagram.com/nextnobel/";
@@ -10,10 +11,14 @@ const STORIES = [
 ];
 
 const FALLBACK_POSTS = [
-  { id: 1, title: "기초과학이 세상을 바꾸는 법", type: "REEL", thumbnail: "/reels/reel1.jpg", url: "https://www.instagram.com/reel/DVVbOIliSeb/" },
-  { id: 2, title: "한국 노벨상 머지않았습니다", type: "REEL", thumbnail: "/reels/reel2.jpg", url: "https://www.instagram.com/reel/DVVa4dVidZp/" },
-  { id: 3, title: "의사 대신 연구 선택한 이유", type: "REEL", thumbnail: "/reels/reel3.jpg", url: "https://www.instagram.com/reel/DVTIl0UiSyN/" },
-  { id: 4, title: "23살에 대학원 입학합니다", type: "REEL", thumbnail: "/reels/reel4.jpg", url: "https://www.instagram.com/reel/DVTFakrCRgL/" },
+  { id: 1, title: "물병세우기 필승법", type: "REEL", thumbnail: "/reels/reel5.jpg", url: "https://www.instagram.com/reel/DVpTeKnCdD2/" },
+  { id: 2, title: "24살에 네이처 저자..?", type: "REEL", thumbnail: "/reels/reel6.jpg", url: "https://www.instagram.com/reel/DVrtuOKEz5r/" },
+  { id: 3, title: "대회 상품으로 소행성을 받다", type: "REEL", thumbnail: "/reels/reel7.jpg", url: "https://www.instagram.com/reel/DVuYH5_E0ji/" },
+  { id: 4, title: "카고메 물질 연구하는 이유", type: "REEL", thumbnail: "/reels/reel8.jpg", url: "https://www.instagram.com/reel/DVx8p_GiTgw/" },
+  { id: 5, title: "기초과학이 세상을 바꾸는 법", type: "REEL", thumbnail: "/reels/reel1.jpg", url: "https://www.instagram.com/reel/DVVbOIliSeb/" },
+  { id: 6, title: "한국 노벨상 머지않았습니다", type: "REEL", thumbnail: "/reels/reel2.jpg", url: "https://www.instagram.com/reel/DVVa4dVidZp/" },
+  { id: 7, title: "의사 대신 연구 선택한 이유", type: "REEL", thumbnail: "/reels/reel3.jpg", url: "https://www.instagram.com/reel/DVTIl0UiSyN/" },
+  { id: 8, title: "23살에 대학원 입학합니다", type: "REEL", thumbnail: "/reels/reel4.jpg", url: "https://www.instagram.com/reel/DVTFakrCRgL/" },
 ];
 
 function useScrollReveal(threshold = 0.12) {
@@ -298,6 +303,7 @@ export default function App() {
   return (
     <div style={{ background: "#FCFBF9", minHeight: "100vh" }}>
       <style>{globalCSS}</style>
+      <Analytics />
       <Nav scrolled={scrolled} />
       <Hero />
       <Featured story={STORIES[0]} />
