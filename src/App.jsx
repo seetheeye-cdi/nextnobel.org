@@ -311,6 +311,7 @@ export default function App() {
       <InstagramSection />
       <Newsletter />
       <Footer />
+      <Analytics />
     </div>
   );
 }
